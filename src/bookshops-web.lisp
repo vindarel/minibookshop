@@ -16,10 +16,15 @@
 
 (defparameter *title* "Minibookshop")
 
+
 (defmethod weblocks/session:init ((app bookshops))
-  (let ((results))
+  (let (results hello)
     (flet ((query (&key query &allow-other-keys)
              (setf results (books query))
+             (weblocks/widget:update (weblocks/widgets/root:get)))
+           (hello (&key arg &allow-other-keys)
+             (declare (ignore arg))
+             (setf hello (if hello nil t))
              (weblocks/widget:update (weblocks/widgets/root:get))))
       (lambda ()
         (with-html
@@ -47,7 +52,9 @@
              (:th "Title")
              (:th "Authors")
              (:th "Editor")
-             (:th "Price"))
+             (:th "Price")
+             (:th "Hello ?")
+             (:th ))
             (:tbody)
             (dolist (it results)
               (with-html
@@ -55,7 +62,15 @@
                  (:td (title it))
                  (:td (authors it))
                  (:td (editor it))
-                 (:td (price it))))))))))))
+                 (:td (price it))
+                 (:td (if hello
+                          (:div "HELLO !")))
+                 (:td
+                  (with-html-form (:POST #'hello)
+                    (:input :type "hidden")
+                    (:input :type "submit"
+                            :class "ui primary button"
+                            :value "Say hello")))))))))))))
 
 (defun start ()
   (weblocks/debug:on)
