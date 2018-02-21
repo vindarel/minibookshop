@@ -14,3 +14,9 @@ https://gitlab.com/vindarel/cl-bookshops
 ## Installation
 
 Needs weblocks (reblocks), weblocks-ui, weblocks-parenscript & our cl-bookshops in QL's local projects.
+
+## Develop
+
+> can not find action: 022tdefe…
+
+reload the page.

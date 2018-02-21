@@ -14,6 +14,8 @@
 (defvar *port* (find-port:find-port))
 
 
+(defparameter *title* "Minibookshop")
+
 (defmethod weblocks/session:init ((app bookshops))
   (let ((results))
     (flet ((query (&key query &allow-other-keys)
@@ -21,17 +23,39 @@
              (weblocks/widget:update (weblocks/widgets/root:get))))
       (lambda ()
         (with-html
-          (:h1 "Books")
-          (with-html-form (:POST #'query)
-            (:input :type "text"
-                    :name "query"
-                    :placeholder "search...")
-            (:input :type "submit"
-                    :value "Search"))
-          (:ul :class "books"
-               (loop for it in results
-                  do (with-html
-                       (:li (format nil "~a ~a" (title it) (price it)))))))))))
+          (:doctype)
+          (:html
+           (:head
+            (:meta :http-equiv "Content-Type" :content "text/html; charset=utf-8") ;; useless
+            (:meta :charset "UTF-8")
+            (:meta :charset "UTF-8")
+            (:link :rel "stylesheet" :type "text/css" :href "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css")
+            (:title *title*))
+
+           (:h1 "Minibookshop")
+           (with-html-form (:POST #'query)
+             (:div :class "ui action input"
+              (:input :type "text"
+                      :name "query"
+                      :class "ui input"
+                      :placeholder "search...")
+              (:input :type "submit"
+                      :value "Search")))
+
+           (:table :class "ui selectable table"
+            (:thead
+             (:th "Title")
+             (:th "Authors")
+             (:th "Editor")
+             (:th "Price"))
+            (:tbody)
+            (dolist (it results)
+              (with-html
+                (:tr
+                 (:td (title it))
+                 (:td (authors it))
+                 (:td (editor it))
+                 (:td (price it))))))))))))
 
 (defun start ()
   (weblocks/debug:on)
