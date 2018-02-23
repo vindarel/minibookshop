@@ -22,9 +22,8 @@
     (flet ((query (&key query &allow-other-keys)
              (setf results (books query))
              (weblocks/widget:update (weblocks/widgets/root:get)))
-           (hello (&key arg &allow-other-keys)
-             (declare (ignore arg))
-             (setf hello (if hello nil t))
+           (hello (&key index &allow-other-keys)
+             (setf hello index)
              (weblocks/widget:update (weblocks/widgets/root:get))))
       (lambda ()
         (with-html
@@ -63,11 +62,12 @@
                  (:td (authors it))
                  (:td (editor it))
                  (:td (price it))
-                 (:td (if hello
-                          (:div "HELLO !")))
+                 (:td hello)
                  (:td
                   (with-html-form (:POST #'hello)
-                    (:input :type "hidden")
+                    (:input :type "hidden"
+                            :name "index"
+                            :value (position it results))
                     (:input :type "submit"
                             :class "ui primary button"
                             :value "Say hello")))))))))))))
