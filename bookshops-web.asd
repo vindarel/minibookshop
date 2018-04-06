@@ -7,6 +7,7 @@
   :author ""
   :license ""
   :depends-on (:weblocks
+               :weblocks-ui
                :find-port)
   :components ((:module "src"
                 :components
