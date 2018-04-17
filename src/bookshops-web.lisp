@@ -27,12 +27,13 @@
 
 
 (defmethod weblocks/session:init ((app bookshops))
-  (let (results hello)
+  (let (results)
     (flet ((query (&key query &allow-other-keys)
              (setf results (books query))
              (weblocks/widget:update (weblocks/widgets/root:get)))
-           (hello (&key index &allow-other-keys)
-             (setf hello index)
+           (add-book (&key index &allow-other-keys)
+             ;; logging
+             (save-book (elt results (parse-integer index)))
              (weblocks/widget:update (weblocks/widgets/root:get))))
       (lambda ()
         (with-html
@@ -61,7 +62,8 @@
              (:th "Authors")
              (:th "Editor")
              (:th "Price")
-             (:th "Hello ?")
+             (:th "Quantity")
+             (:th "Add-Book ?")
              (:th ))
             (:tbody)
             (dolist (it results)
@@ -71,15 +73,15 @@
                  (:td (authors it))
                  (:td (editor it))
                  (:td (price it))
-                 (:td hello)
+                 (:td (quantity-of it))
                  (:td
-                  (with-html-form (:POST #'hello)
+                  (with-html-form (:POST #'add-book)
                     (:input :type "hidden"
                             :name "index"
                             :value (position it results))
                     (:input :type "submit"
                             :class "ui primary button"
-                            :value "Say hello")))))))))))))
+                            :value "add-book")))))))))))))
 
 (defun start ()
   (weblocks/debug:on)
