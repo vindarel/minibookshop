@@ -1,7 +1,16 @@
 (defpackage bookshops-web
   (:use #:cl
-        #:bookshops ;; local project
         #:weblocks/html)
+  (:import-from :bookshops
+                :books)
+  (:import-from #:bookshops.models
+                #:save-book
+                :title
+                :authors
+                :editor
+                :price
+                :quantity
+                :quantity-of)
   (:import-from #:weblocks/app
                 #:defapp)
   (:import-from #:weblocks-ui/form
