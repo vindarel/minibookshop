@@ -42,8 +42,8 @@
            (:head
             (:meta :http-equiv "Content-Type" :content "text/html; charset=utf-8") ;; useless
             (:meta :charset "UTF-8")
-            (:meta :charset "UTF-8")
-            (:link :rel "stylesheet" :type "text/css" :href "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css")
+            (:link :rel "stylesheet" :type "text/css" :href "https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css" )
+
             (:title *title*))
 
            (:h1 "Minibookshop")
@@ -86,3 +86,7 @@
 (defun start ()
   (weblocks/debug:on)
   (weblocks/server:start :port *port*))
+
+;; restart
+(defun reset ()
+  (weblocks/debug:reset-latest-session))

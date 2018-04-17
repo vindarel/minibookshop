@@ -4,9 +4,11 @@ https://github.com/40ants/weblocks/blob/reblocks/docs/source/quickstart.rst
 
 https://gitlab.com/vindarel/cl-bookshops
 
+! In development, don't look ! (but it's awesome)
+
 ## Usage
 
-    (weblocks/debug:reset-latest-session)
+    (ql:quickload "bookshops-web")
 
     (start)
 
@@ -20,6 +22,8 @@ https://github.com/40ants/weblocks-parenscript
 https://github.com/vindarel/cl-bookshops
 
 ## Develop
+
+    (weblocks/debug:reset-latest-session)
 
 > can not find action: 022tdefe…
 
