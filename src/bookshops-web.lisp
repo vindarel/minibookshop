@@ -6,6 +6,7 @@
   (:import-from #:bookshops.models
                 #:save-book
                 :title
+                :cover-url
                 :authors
                 :editor
                 :price
@@ -69,7 +70,9 @@
             (dolist (it results)
               (with-html
                 (:tr
-                 (:td (title it))
+                 (:td
+                  (:div (title it))
+                  (:img :src (cover-url it)))
                  (:td (authors it))
                  (:td (editor it))
                  (:td (price it))
