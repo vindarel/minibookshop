@@ -36,7 +36,8 @@
              (weblocks/widget:update (weblocks/widgets/root:get)))
            (add-book (&key index &allow-other-keys)
              ;; logging
-             (save-book (elt results (parse-integer index)))
+             (setf (elt results (parse-integer index))
+                   (save-book (elt results (parse-integer index))))
              (weblocks/widget:update (weblocks/widgets/root:get)))
 
            (toggle-covers ()
