@@ -16,4 +16,11 @@
   ;; :long-description
   ;; #.(read-file-string
      ;; (subpathname *load-pathname* "README.markdown"))
+
+  ;; build executable with asdf:make
+  :build-operation "program-op"
+  :build-pathname "bookshops-web"
+  :entry-point "bookshops-web:main"
+
+
   :in-order-to ((test-op (test-op "bookshops-web-test"))))

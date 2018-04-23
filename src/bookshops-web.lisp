@@ -16,7 +16,8 @@
                 #:defapp)
   (:import-from #:weblocks-ui/form
                 #:with-html-form
-                #:render-form-and-button))
+                #:render-form-and-button)
+  (:export :main))
 (in-package :bookshops-web)
 
 (defapp bookshops)
@@ -100,9 +101,31 @@
                                    :value "add-book")))))))))))))
 
 (defun start ()
+  "Connect to the DB and start weblocks."
+  (bookshops.models:connect)
   (weblocks/debug:on)
   (weblocks/server:start :port *port*))
 
 ;; restart
 (defun reset ()
   (weblocks/debug:reset-latest-session))
+
+(defun main ()
+  (defvar *port* (find-port:find-port))
+  (format t "~&--- sbcl home: ~a~&" (SB-INT:SBCL-HOMEDIR-PATHNAME))
+
+  (start)
+  (handler-case (bt:join-thread (find-if (lambda (th)
+                                             (search "hunchentoot" (bt:thread-name th)))
+                                         (bt:all-threads)))
+    (#+sbcl sb-sys:interactive-interrupt
+      #+ccl  ccl:interrupt-signal-condition
+      #+clisp system::simple-interrupt-condition
+      #+ecl ext:interactive-interrupt
+      #+allegro excl:interrupt-signal
+      () (progn
+           (format *error-output* "Aborting.~&")
+           ;; (weblocks:stop)
+           (uiop:quit 1))
+    ;; for others, unhandled errors (we might want to do the same).
+    (error (c) (format t "Woops, an unknown error occured:~&~a~&" c)))))
