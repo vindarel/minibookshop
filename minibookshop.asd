@@ -12,7 +12,8 @@
                :find-port)
   :components ((:module "src"
                 :components
-                ((:file "minibookshop"))))
+                ((:file "package")
+                 (:file "minibookshop"))))
   :description ""
   ;; :long-description
   ;; #.(read-file-string
