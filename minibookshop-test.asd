@@ -1,16 +1,16 @@
 #|
-  This file is a part of bookshops-web project.
+  This file is a part of minibookshop project.
 |#
 
-(defsystem "bookshops-web-test"
+(defsystem "minibookshop-test"
   :defsystem-depends-on ("prove-asdf")
   :author ""
   :license ""
-  :depends-on ("bookshops-web"
+  :depends-on ("minibookshop"
                "prove")
   :components ((:module "tests"
                 :components
-                ((:test-file "bookshops-web"))))
-  :description "Test system for bookshops-web"
+                ((:test-file "minibookshop"))))
+  :description "Test system for minibookshop"
 
   :perform (test-op (op c) (symbol-call :prove-asdf :run-test-system c)))

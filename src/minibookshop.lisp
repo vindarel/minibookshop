@@ -1,4 +1,4 @@
-(defpackage bookshops-web
+(defpackage minibookshop
   (:use #:cl
         #:weblocks/html)
   (:import-from :bookshops
@@ -18,7 +18,7 @@
                 #:with-html-form
                 #:render-form-and-button)
   (:export :main))
-(in-package :bookshops-web)
+(in-package :minibookshop)
 
 (defapp bookshops)
 

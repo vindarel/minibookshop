@@ -1,4 +1,4 @@
-# Bookshops-Web
+# Minibookshop
 
 https://github.com/40ants/weblocks/blob/reblocks/docs/source/quickstart.rst
 
@@ -8,7 +8,7 @@ https://gitlab.com/vindarel/cl-bookshops
 
 ## Usage
 
-    (ql:quickload "bookshops-web")
+    (ql:quickload "minibookshop")
 
     (start)
 

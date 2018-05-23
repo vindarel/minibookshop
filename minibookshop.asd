@@ -1,17 +1,18 @@
 #|
-  This file is a part of bookshops-web project.
+  This file is a part of minibookshop project.
 |#
 
-(asdf:defsystem "bookshops-web"
+(asdf:defsystem "minibookshop"
   :version "0.1.0"
   :author ""
   :license ""
   :depends-on (:weblocks
                :weblocks-ui
+               :bookshops
                :find-port)
   :components ((:module "src"
                 :components
-                ((:file "bookshops-web"))))
+                ((:file "minibookshop"))))
   :description ""
   ;; :long-description
   ;; #.(read-file-string
@@ -19,8 +20,8 @@
 
   ;; build executable with asdf:make
   :build-operation "program-op"
-  :build-pathname "bookshops-web"
-  :entry-point "bookshops-web:main"
+  :build-pathname "minibookshop"
+  :entry-point "minibookshop:main"
 
 
-  :in-order-to ((test-op (test-op "bookshops-web-test"))))
+  :in-order-to ((test-op (test-op "minibookshop-test"))))
