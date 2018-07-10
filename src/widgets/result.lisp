@@ -21,7 +21,7 @@
        (:td (authors book))
        (:td (editor book))
        (:td (price book))
-       (:td (quantity-of book))
+       (:td (quantity book))
        (:td
         ;TODO:
         ;; (with-html-form (:POST #'add-book)

@@ -11,7 +11,7 @@
                 :editor
                 :price
                 :quantity
-                :quantity-of)
+                :quantity)
   (:import-from #:weblocks/app
                 #:defapp)
   (:import-from #:weblocks-ui/form
@@ -91,7 +91,7 @@
                         (:td (authors it))
                         (:td (editor it))
                         (:td (price it))
-                        (:td (quantity-of it))
+                        (:td (quantity it))
                         (:td
                          (with-html-form (:POST #'add-book)
                            (:input :type "hidden"
