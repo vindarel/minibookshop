@@ -17,6 +17,8 @@
   (:import-from #:weblocks-ui/form
                 #:with-html-form
                 #:render-form-and-button)
+  (:import-from #:minibookshop/widgets/main
+                #:make-main-widget)
   (:export :main
            :start))
 
@@ -101,7 +103,12 @@
                                    :class "ui primary button"
                                    :value "add-book")))))))))))))
 
-(defun start ()
+(defapp stock)
+
+(defmethod weblocks/session:init ((app stock))
+  "Search our stock."
+  (make-main-widget)
+  )
   "Connect to the DB and start weblocks."
   (bookshops.models:connect)
   (weblocks/debug:on)

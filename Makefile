@@ -10,3 +10,4 @@ build:
 install:
 	#TODO: to finish
 	test -d ~/quicklisp/local-projects/weblocks-ui || git clone "foo"
+	test -d ~/quicklisp/local-projects/weblocks-navigation-widget || git clone https://github.com/40ants/weblocks-navigation-widget

@@ -8,12 +8,18 @@
   :license ""
   :depends-on (:weblocks
                :weblocks-ui
+               :weblocks-navigation-widget
                :bookshops
                :find-port)
-  :components ((:module "src"
+  :components ((:module "src/widgets"
+                :components
+                ((:file "not-found")
+                 (:file "main")))
+               (:module "src"
                 :components
                 ((:file "package")
                  (:file "minibookshop"))))
+
   :description ""
   ;; :long-description
   ;; #.(read-file-string
