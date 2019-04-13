@@ -1,5 +1,7 @@
 # Minibookshop
 
+http://40ants.com/weblocks/quickstart.html
+
 https://github.com/40ants/weblocks/blob/reblocks/docs/source/quickstart.rst
 
 https://gitlab.com/vindarel/cl-bookshops
@@ -10,7 +12,18 @@ https://gitlab.com/vindarel/cl-bookshops
 
     (ql:quickload "minibookshop")
 
-    (start)
+    (minibookshop:start)
+    <INFO> [17:06:25] weblocks/server server.lisp (start) -
+    Starting weblocks WEBLOCKS/SERVER::PORT: 40000
+    WEBLOCKS/SERVER::SERVER-TYPE: :HUNCHENTOOT DEBUG: T
+    <INFO> [17:06:25] weblocks/server server.lisp (start-server) -
+    Starting webserver on WEBLOCKS/SERVER::INTERFACE: "localhost"
+    WEBLOCKS/SERVER::PORT: 40000 DEBUG: T
+    #<SERVER port=40000 running>
+
+thus open your browser on http://localhost:40000/bookshops
+
+<!-- TODO: make something on default "/". -->
 
 
 ## Installation

@@ -17,8 +17,8 @@
   (:import-from #:weblocks-ui/form
                 #:with-html-form
                 #:render-form-and-button)
-  (:export :main))
-(in-package :minibookshop)
+  (:export :main
+           :start))
 
 (defapp bookshops)
 
